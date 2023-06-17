@@ -1,0 +1,12 @@
+appId: com.teknologidewaruci.nextron
+productName: FK Convert Excel Baksos Report
+copyright: Copyright © 2023 Engga Jaya Syahbandi
+directories:
+  output: dist
+  buildResources: resources
+files:
+  - from: .
+    filter:
+      - package.json
+      - app
+publish: null
