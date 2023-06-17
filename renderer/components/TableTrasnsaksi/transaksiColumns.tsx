@@ -93,6 +93,10 @@ export const transaksiColumns = (parentHeader: string) => {
             "YYYY-MM-DD"
           ),
           jumlah: row.original.jumlah.split(".").join("") * 1,
+          iuran_terakhir:
+            row.original.iuran_terakhir !== null
+              ? row.original.iuran_terakhir.split(".").join("") * 1
+              : null,
         };
         // const newRow = {
         //   id: row.id,

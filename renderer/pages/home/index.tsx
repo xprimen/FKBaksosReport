@@ -68,7 +68,7 @@ function Home() {
       tgl_iuran: moment(d.tgl_iuran).format("D.M.YY"),
       jumlah: numberToString(d.jumlah),
       iuran_terakhir:
-        Number(d.iuran_terakhir) > 0 && numberToString(d.iuran_terakhir),
+        Number(d.iuran_terakhir) > 0 ? numberToString(d.iuran_terakhir) : null,
     }));
     return newData;
   };
