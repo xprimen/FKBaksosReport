@@ -1,7 +1,9 @@
+import { useContext } from "react";
 import { TAnggota, TTransaksi } from "../helpers/types";
-import { ActionTypes } from "./reducer";
+import { AppContext } from "./context";
+import { ActionTypes, MainActions } from "./reducer";
 
-export const getAnggota = async (dispatch) => {
+export const getAnggota = async (dispatch: React.Dispatch<MainActions>) => {
   dispatch({
     type: ActionTypes.LoadingAnggota,
   });
@@ -38,7 +40,10 @@ export const getAnggota = async (dispatch) => {
     }); */
 };
 
-export const saveAnggota = async (dispatch, row: TAnggota) => {
+export const saveAnggota = async (
+  dispatch: React.Dispatch<MainActions>,
+  row: TAnggota
+) => {
   dispatch({
     type: ActionTypes.LoadingAnggota,
   });
@@ -58,7 +63,7 @@ export const saveAnggota = async (dispatch, row: TAnggota) => {
   }
 };
 
-export const getTransaksi = async (dispatch) => {
+export const getTransaksi = async (dispatch: React.Dispatch<MainActions>) => {
   dispatch({
     type: ActionTypes.LoadingTransaksi,
   });
@@ -78,7 +83,10 @@ export const getTransaksi = async (dispatch) => {
   }
 };
 
-export const saveTransaksi = async (dispatch, row: TTransaksi) => {
+export const saveTransaksi = async (
+  dispatch: React.Dispatch<MainActions>,
+  row: TTransaksi
+) => {
   dispatch({
     type: ActionTypes.LoadingTransaksi,
   });
@@ -97,6 +105,38 @@ export const saveTransaksi = async (dispatch, row: TTransaksi) => {
     dispatch({
       type: ActionTypes.SaveTransaksi,
     });
+  } catch (err) {
+    dispatch({
+      type: ActionTypes.ErrorTransaksi,
+      payload: "Gagal Simpan Data",
+    });
+  }
+};
+
+export const deleteTransaksi = async (
+  dispatch: React.Dispatch<MainActions>,
+  seq: string
+) => {
+  dispatch({
+    type: ActionTypes.LoadingTransaksi,
+  });
+  let getData: { data: TTransaksi[]; title: string } = JSON.parse(
+    localStorage.getItem("transaksi")
+  );
+  const index = getData.data.findIndex((x) => {
+    // console.log("x.seq", x.seq);
+    // console.log("row.seq", Number(row.seq));
+    // console.log("Hasil =", Number(x.seq) === Number(row.seq));
+    return Number(x.seq) === Number(seq);
+  });
+  // delete data.data[id];
+  getData.data.splice(index, 1);
+  try {
+    localStorage.setItem("transaksi", JSON.stringify(getData));
+    dispatch({
+      type: ActionTypes.DeleteTransaksi,
+    });
+    getTransaksi(dispatch);
   } catch (err) {
     dispatch({
       type: ActionTypes.ErrorTransaksi,

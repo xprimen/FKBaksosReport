@@ -14,6 +14,9 @@ import {
 import { columns } from "../TableAnggota/columns";
 import { TFilterColumns } from "../ui/data-table";
 import moment from "moment";
+import { deleteTransaksi } from "../../context/actions";
+import { Dispatch } from "react";
+import { MainActions } from "../../context/reducer";
 
 /* type ColTransaksi = {
   nomor: string;
@@ -27,7 +30,10 @@ import moment from "moment";
   keterangan: string;
 }; */
 
-export const transaksiColumns = (parentHeader: string) => {
+export const transaksiColumns = (
+  parentHeader: string,
+  dispatch: Dispatch<MainActions>
+) => {
   return [
     // {
     //   accessorKey: "seq",
@@ -134,7 +140,16 @@ export const transaksiColumns = (parentHeader: string) => {
             >
               <a className="btn btn-sm btn-ghost">Edit</a>
             </Link>
-            <button className="btn btn-sm btn-error">Hapus</button>
+            <button
+              className="btn btn-sm btn-error"
+              onClick={() => {
+                if (confirm("Yakin Akana Menghapus Data Ini?")) {
+                  deleteTransaksi(dispatch, rowOri.seq);
+                }
+              }}
+            >
+              Hapus
+            </button>
           </div>
         );
       },

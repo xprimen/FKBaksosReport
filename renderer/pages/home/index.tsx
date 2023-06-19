@@ -125,7 +125,7 @@ function Home() {
             <DataTable
               idTable="data-transaksi"
               loading={transaksi.loading}
-              columns={transaksiColumns(transaksi.title)}
+              columns={transaksiColumns(transaksi.title, dispatch)}
               data={transformData(transaksi.data)}
               filterCol={transaksiFilterColumns}
             />

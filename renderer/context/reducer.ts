@@ -25,6 +25,7 @@ export enum ActionTypes {
   ErrorTransaksi = "ERROR_TRANSAKSI",
   CleanTransaksi = "CLEAN_TRANSAKSI",
   SaveTransaksi = "SAVE_TRANSAKSI",
+  DeleteTransaksi = "DELETE_TRANSAKSI",
 }
 
 export type MainPayload = {
@@ -46,6 +47,7 @@ export type MainPayload = {
   [ActionTypes.LoadingTransaksi]: undefined;
   [ActionTypes.ErrorTransaksi]: string;
   [ActionTypes.CleanTransaksi]: undefined;
+  [ActionTypes.DeleteTransaksi]: undefined;
 };
 
 // export type MainActions =
@@ -180,6 +182,14 @@ export const mainReducer = (state: MainData, action: MainActions): MainData => {
           ...state.transaksi,
           loading: false,
           error: action.payload,
+        },
+      };
+    case ActionTypes.DeleteTransaksi:
+      return {
+        ...state,
+        transaksi: {
+          ...state.transaksi,
+          loading: false,
         },
       };
 

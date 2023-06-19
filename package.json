@@ -2,7 +2,7 @@
   "private": true,
   "name": "fk-convert-excel-baksos-report",
   "description": "Aplikasi Konversi Excel FK Baksos",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Engga Jaya Syahbandi <engga.muse@gmail.com>",
   "main": "app/background.js",
   "scripts": {
@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.5",
-    "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-select": "^1.2.2",
     "@tanstack/react-table": "^8.9.2",
     "@types/node": "^18.11.18",
@@ -34,7 +33,6 @@
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
     "daisyui": "^3.0.3",
-    "date-fns": "^2.30.0",
     "electron": "^21.3.3",
     "electron-builder": "^23.6.0",
     "eslint": "^8.42.0",
@@ -45,7 +43,6 @@
     "postcss": "^8.4.13",
     "react": "^18.2.0",
     "react-data-grid": "^7.0.0-beta.33",
-    "react-day-picker": "^8.7.1",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.44.3",
